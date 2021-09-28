@@ -1,12 +1,13 @@
 pipeline {
   agent any
-  stages {
-    parallel{
-    stage('compile') {
-      steps {
-        build(job: 'appdeployer', propagate: true)
-      }
-    }
-    }
-  }
-}
+  stages{
+        stage('deploy job') {
+            parallel {
+              stage('compile') {
+                steps {
+                  build(job: 'appdeployer', propagate: true)
+                }
+              }
+             }
+            }
+          }
